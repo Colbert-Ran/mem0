@@ -15,7 +15,6 @@ To make a contribution, follow these steps:
 
 For more details about pull requests, please read [GitHub's guides](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
-
 ### 📦 Development Environment
 
 We use `hatch` for managing development environments. To set up:
@@ -68,14 +67,16 @@ All packages are published automatically via GitHub Actions when a GitHub Releas
 
 #### Tag Prefixes
 
-| Package | Registry | Tag Prefix | Example |
-|---------|----------|------------|---------|
-| `mem0ai` (Python SDK) | PyPI | `v*` | `v0.1.31` |
-| `mem0-cli` (Python CLI) | PyPI | `cli-v*` | `cli-v0.2.1` |
-| `mem0ai` (TypeScript SDK) | npm | `ts-v*` | `ts-v2.4.6` |
-| `@mem0/cli` (Node CLI) | npm | `cli-node-v*` | `cli-node-v0.1.2` |
-| `@mem0/vercel-ai-provider` | npm | `vercel-ai-v*` | `vercel-ai-v2.0.6` |
-| `@mem0/openclaw-mem0` | npm | `openclaw-v*` | `openclaw-v1.0.1` |
+
+| Package                    | Registry | Tag Prefix     | Example            |
+| -------------------------- | -------- | -------------- | ------------------ |
+| `mem0ai` (Python SDK)      | PyPI     | `v*`           | `v0.1.31`          |
+| `mem0-cli` (Python CLI)    | PyPI     | `cli-v*`       | `cli-v0.2.1`       |
+| `mem0ai` (TypeScript SDK)  | npm      | `ts-v*`        | `ts-v2.4.6`        |
+| `@mem0/cli` (Node CLI)     | npm      | `cli-node-v*`  | `cli-node-v0.1.2`  |
+| `@mem0/vercel-ai-provider` | npm      | `vercel-ai-v*` | `vercel-ai-v2.0.6` |
+| `@mem0/openclaw-mem0`      | npm      | `openclaw-v*`  | `openclaw-v1.0.1`  |
+
 
 #### How to Release
 
@@ -89,3 +90,4 @@ All packages are published automatically via GitHub Actions when a GitHub Releas
 - **npm packages** use OIDC trusted publishing via npm CLI (>= 11.5.1) — no tokens or secrets required
 - All workflows require `permissions: id-token: write` for OIDC authentication
 - First publish of a new npm package must be done manually; OIDC works for subsequent versions
+

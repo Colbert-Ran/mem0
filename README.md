@@ -1,59 +1,28 @@
-<p align="center">
-  <a href="https://github.com/mem0ai/mem0">
-    <img src="docs/images/banner-sm.png" width="800px" alt="Mem0 - The Memory Layer for Personalized AI">
-  </a>
-</p>
-<p align="center" style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-  <a href="https://trendshift.io/repositories/11194" target="blank">
-    <img src="https://trendshift.io/api/badge/repositories/11194" alt="mem0ai%2Fmem0 | Trendshift" width="250" height="55"/>
-  </a>
-</p>
+![Mem0 - The Memory Layer for Personalized AI](docs/images/banner-sm.png)
 
-<p align="center">
-  <a href="https://mem0.ai">Learn more</a>
-  ·
-  <a href="https://mem0.dev/DiG">Join Discord</a>
-  ·
-  <a href="https://mem0.dev/demo">Demo</a>
-</p>
+![mem0ai%2Fmem0 | Trendshift](https://trendshift.io/api/badge/repositories/11194)
 
-<p align="center">
-  <a href="https://mem0.dev/DiG">
-    <img src="https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white" alt="Mem0 Discord">
-  </a>
-  <a href="https://pepy.tech/project/mem0ai">
-    <img src="https://img.shields.io/pypi/dm/mem0ai" alt="Mem0 PyPI - Downloads">
-  </a>
-  <a href="https://github.com/mem0ai/mem0">
-    <img src="https://img.shields.io/github/commit-activity/m/mem0ai/mem0?style=flat-square" alt="GitHub commit activity">
-  </a>
-  <a href="https://pypi.org/project/mem0ai" target="blank">
-    <img src="https://img.shields.io/pypi/v/mem0ai?color=%2334D058&label=pypi%20package" alt="Package version">
-  </a>
-  <a href="https://www.npmjs.com/package/mem0ai" target="blank">
-    <img src="https://img.shields.io/npm/v/mem0ai" alt="Npm package">
-  </a>
-  <a href="https://www.ycombinator.com/companies/mem0">
-    <img src="https://img.shields.io/badge/Y%20Combinator-S24-orange?style=flat-square" alt="Y Combinator S24">
-  </a>
-</p>
+[Learn more](https://mem0.ai) · [Join Discord](https://mem0.dev/DiG) · [Demo](https://mem0.dev/demo)
 
-<p align="center">
-  <a href="https://mem0.ai/research"><strong>📄 Building Production-Ready AI Agents with Scalable Long-Term Memory →</strong></a>
-</p>
+![Mem0 Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white) [](https://pepy.tech/project/mem0ai)![Mem0 PyPI - Downloads](https://img.shields.io/pypi/dm/mem0ai)[ ](https://pepy.tech/project/mem0ai)![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mem0ai/mem0?style=flat-square)[ ](https://pepy.tech/project/mem0ai)![Package version](https://img.shields.io/pypi/v/mem0ai?color=%2334D058&label=pypi%20package)[ ](https://pepy.tech/project/mem0ai)![Npm package](https://img.shields.io/npm/v/mem0ai)[ ](https://pepy.tech/project/mem0ai)![Y Combinator S24](https://img.shields.io/badge/Y%20Combinator-S24-orange?style=flat-square)[
+
+**[📄 Building Production-Ready AI Agents with Scalable Long-Term Memory →](https://mem0.ai/research)**
 
 ## New Memory Algorithm (April 2026)
 
-| Benchmark | Old | New  | Tokens  | Latency p50  |
-| --- | --- | --- | --- | --- |
-| **LoCoMo** | 71.4 | **91.6** | 7.0K  | 0.88s  |
-| **LongMemEval** | 67.8 | **93.4** | 6.8K  | 1.09s  |
-| **BEAM (1M)** | — | **64.1** | 6.7K  | 1.00s  |
-| **BEAM (10M)** | — | **48.6** | 6.9K  | 1.05s  |
+
+| Benchmark       | Old  | New      | Tokens | Latency p50 |
+| --------------- | ---- | -------- | ------ | ----------- |
+| **LoCoMo**      | 71.4 | **91.6** | 7.0K   | 0.88s       |
+| **LongMemEval** | 67.8 | **93.4** | 6.8K   | 1.09s       |
+| **BEAM (1M)**   | —    | **64.1** | 6.7K   | 1.00s       |
+| **BEAM (10M)**  | —    | **48.6** | 6.9K   | 1.05s       |
+
 
 All benchmarks run on the same production-representative model stack. Single-pass retrieval (one call, no agentic loops).
 
 **What changed:**
+
 - **Single-pass ADD-only extraction** -- one LLM call, no UPDATE/DELETE. Memories accumulate; nothing is overwritten.
 - **Agent-generated facts are first-class** -- when an agent confirms an action, that information is now stored with equal weight.
 - **Entity linking** -- entities are extracted, embedded, and linked across memories for retrieval boosting.
@@ -62,6 +31,7 @@ All benchmarks run on the same production-representative model stack. Single-pas
 See the [migration guide](https://docs.mem0.ai/migration/oss-v2-to-v3) for upgrade instructions. The [evaluation framework](https://github.com/mem0ai/memory-benchmarks) is open-sourced so anyone can reproduce the numbers.
 
 ## Research Highlights
+
 - **91.6 on LoCoMo** -- +20 points over the previous algorithm
 - **93.4 on LongMemEval** -- +26 points, with +53.6 on assistant memory recall
 - **64.1 on BEAM (1M)** -- production-scale memory evaluation at 1M tokens
@@ -74,16 +44,18 @@ See the [migration guide](https://docs.mem0.ai/migration/oss-v2-to-v3) for upgra
 ### Key Features & Use Cases
 
 **Core Capabilities:**
+
 - **Multi-Level Memory**: Seamlessly retains User, Session, and Agent state with adaptive personalization
 - **Developer-Friendly**: Intuitive API, cross-platform SDKs, and a fully managed service option
 
 **Applications:**
+
 - **AI Assistants**: Consistent, context-rich conversations
 - **Customer Support**: Recall past tickets and user history for tailored help
 - **Healthcare**: Track patient preferences and history for personalized care
 - **Productivity & Gaming**: Adaptive workflows and environments based on user behavior
 
-## 🚀 Quickstart Guide <a name="quickstart"></a>
+## 🚀 Quickstart Guide 
 
 Choose between our hosted platform or self-hosted package:
 
@@ -110,6 +82,7 @@ python -m spacy download en_core_web_sm
 ```
 
 Install sdk via npm:
+
 ```bash
 npm install mem0ai
 ```
@@ -184,9 +157,9 @@ For detailed integration steps, see the [Quickstart](https://docs.mem0.ai/quicks
 
 ## 📚 Documentation & Support
 
-- Full docs: https://docs.mem0.ai
+- Full docs: [https://docs.mem0.ai](https://docs.mem0.ai)
 - Community: [Discord](https://mem0.dev/DiG) · [X (formerly Twitter)](https://x.com/mem0ai)
-- Contact: founders@mem0.ai
+- Contact: [founders@mem0.ai](mailto:founders@mem0.ai)
 
 ## Citation
 

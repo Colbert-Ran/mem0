@@ -6,8 +6,8 @@ This file provides context for AI coding assistants (Claude Code, Cursor, GitHub
 
 **Mem0** ("mem-zero") is an intelligent memory layer for AI agents and assistants. It provides persistent, personalized memory via both a hosted platform API and self-hosted open-source SDKs.
 
-- **Repository**: https://github.com/mem0ai/mem0
-- **Documentation**: https://docs.mem0.ai
+- **Repository**: [https://github.com/mem0ai/mem0](https://github.com/mem0ai/mem0)
+- **Documentation**: [https://docs.mem0.ai](https://docs.mem0.ai)
 - **License**: Apache-2.0
 
 ## Repository Structure
@@ -16,26 +16,28 @@ This is a **polyglot monorepo** containing Python and TypeScript packages, CLIs,
 
 ### Key Directories
 
-| Directory | Description |
-|-----------|-------------|
-| `mem0/` | Core Python SDK (`mem0ai` on PyPI) — memory, LLMs, embeddings, vector stores, graphs, rerankers |
-| `mem0-ts/` | TypeScript SDK (`mem0ai` on npm) — client + OSS memory |
-| `cli/python/` | Python CLI (`mem0-cli` on PyPI) — Typer-based, entry point `mem0` |
-| `cli/node/` | Node CLI (`@mem0/cli` on npm) — Commander-based, entry point `mem0` |
-| `vercel-ai-sdk/` | `@mem0/vercel-ai-provider` — Vercel AI SDK memory provider |
-| `openclaw/` | `@mem0/openclaw-mem0` — OpenClaw plugin for Claude Code / AI editors |
-| `server/` | FastAPI REST server for self-hosted Mem0 (Docker: FastAPI + PostgreSQL/pgvector + Neo4j) |
-| `openmemory/` | Self-hosted memory platform — `api/` (FastAPI + Alembic + MCP server) and `ui/` (Next.js 15 + React 19) |
-| `mem0-plugin/` | AI editor plugins (Claude Code, Cursor, Codex) — MCP server connection, lifecycle hooks, skills |
-| `skills/` | Claude Code skill definitions — `mem0/`, `mem0-cli/`, `mem0-vercel-ai-sdk/` |
-| `docs/` | Documentation site (Mintlify) |
-| `tests/` | Python SDK tests (pytest) |
-| `evaluation/` | Benchmarking framework — LOCOMO evals, experiment runner, score generation |
-| `examples/` | Sample projects — demo apps, Chrome extension, multi-agent patterns |
-| `cookbooks/` | Jupyter notebooks — customer support chatbot, AutoGen integration |
-| `embedchain/` | Legacy Embedchain RAG framework (maintained separately, Poetry-based) |
-| `pr-reviews/` | Pull request review materials |
-| `scripts/` | Repo-wide utility scripts (e.g., `check-llms-txt-coverage.py` for docs/llms.txt sync) |
+
+| Directory        | Description                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------- |
+| `mem0/`          | Core Python SDK (`mem0ai` on PyPI) — memory, LLMs, embeddings, vector stores, graphs, rerankers         |
+| `mem0-ts/`       | TypeScript SDK (`mem0ai` on npm) — client + OSS memory                                                  |
+| `cli/python/`    | Python CLI (`mem0-cli` on PyPI) — Typer-based, entry point `mem0`                                       |
+| `cli/node/`      | Node CLI (`@mem0/cli` on npm) — Commander-based, entry point `mem0`                                     |
+| `vercel-ai-sdk/` | `@mem0/vercel-ai-provider` — Vercel AI SDK memory provider                                              |
+| `openclaw/`      | `@mem0/openclaw-mem0` — OpenClaw plugin for Claude Code / AI editors                                    |
+| `server/`        | FastAPI REST server for self-hosted Mem0 (Docker: FastAPI + PostgreSQL/pgvector + Neo4j)                |
+| `openmemory/`    | Self-hosted memory platform — `api/` (FastAPI + Alembic + MCP server) and `ui/` (Next.js 15 + React 19) |
+| `mem0-plugin/`   | AI editor plugins (Claude Code, Cursor, Codex) — MCP server connection, lifecycle hooks, skills         |
+| `skills/`        | Claude Code skill definitions — `mem0/`, `mem0-cli/`, `mem0-vercel-ai-sdk/`                             |
+| `docs/`          | Documentation site (Mintlify)                                                                           |
+| `tests/`         | Python SDK tests (pytest)                                                                               |
+| `evaluation/`    | Benchmarking framework — LOCOMO evals, experiment runner, score generation                              |
+| `examples/`      | Sample projects — demo apps, Chrome extension, multi-agent patterns                                     |
+| `cookbooks/`     | Jupyter notebooks — customer support chatbot, AutoGen integration                                       |
+| `embedchain/`    | Legacy Embedchain RAG framework (maintained separately, Poetry-based)                                   |
+| `pr-reviews/`    | Pull request review materials                                                                           |
+| `scripts/`       | Repo-wide utility scripts (e.g., `check-llms-txt-coverage.py` for docs/llms.txt sync)                   |
+
 
 ### Core Package Dependencies
 
@@ -264,53 +266,63 @@ make run-openai                    # OpenAI comparison
 
 ### Python
 
-| Function / Class | Purpose | Import |
-|-----------------|---------|--------|
-| `Memory` | Self-hosted memory (sync) | `from mem0 import Memory` |
-| `AsyncMemory` | Self-hosted memory (async) | `from mem0 import AsyncMemory` |
-| `MemoryClient` | Hosted platform client (sync) | `from mem0 import MemoryClient` |
+
+| Function / Class    | Purpose                        | Import                               |
+| ------------------- | ------------------------------ | ------------------------------------ |
+| `Memory`            | Self-hosted memory (sync)      | `from mem0 import Memory`            |
+| `AsyncMemory`       | Self-hosted memory (async)     | `from mem0 import AsyncMemory`       |
+| `MemoryClient`      | Hosted platform client (sync)  | `from mem0 import MemoryClient`      |
 | `AsyncMemoryClient` | Hosted platform client (async) | `from mem0 import AsyncMemoryClient` |
 
-**Key `Memory` / `MemoryClient` methods:**
 
-| Method | Purpose |
-|--------|---------|
-| `add(messages, *, user_id, agent_id, run_id, metadata)` | Store a new memory |
-| `search(query, *, user_id, agent_id, run_id, limit, filters)` | Search memories |
-| `get(memory_id)` | Retrieve a single memory by ID |
-| `get_all(*, user_id, agent_id, run_id, limit)` | List all memories |
-| `update(memory_id, data)` | Update a memory |
-| `delete(memory_id)` | Delete a memory |
-| `delete_all(*, user_id, agent_id, run_id)` | Delete all memories |
-| `history(memory_id)` | Get change history for a memory |
+**Key** `Memory` **/** `MemoryClient` **methods:**
+
+
+| Method                                                        | Purpose                         |
+| ------------------------------------------------------------- | ------------------------------- |
+| `add(messages, *, user_id, agent_id, run_id, metadata)`       | Store a new memory              |
+| `search(query, *, user_id, agent_id, run_id, limit, filters)` | Search memories                 |
+| `get(memory_id)`                                              | Retrieve a single memory by ID  |
+| `get_all(*, user_id, agent_id, run_id, limit)`                | List all memories               |
+| `update(memory_id, data)`                                     | Update a memory                 |
+| `delete(memory_id)`                                           | Delete a memory                 |
+| `delete_all(*, user_id, agent_id, run_id)`                    | Delete all memories             |
+| `history(memory_id)`                                          | Get change history for a memory |
+
 
 ### TypeScript
 
-| Export | Purpose | Import |
-|--------|---------|--------|
+
+| Export         | Purpose                | Import                                  |
+| -------------- | ---------------------- | --------------------------------------- |
 | `MemoryClient` | Hosted platform client | `import { MemoryClient } from 'mem0ai'` |
-| `Memory` | Self-hosted OSS memory | `import { Memory } from 'mem0ai/oss'` |
+| `Memory`       | Self-hosted OSS memory | `import { Memory } from 'mem0ai/oss'`   |
+
 
 ## Import Patterns
 
 ### Python
 
-| What | Import |
-|------|--------|
-| Core memory classes | `from mem0 import Memory, AsyncMemory` |
-| Platform client | `from mem0 import MemoryClient, AsyncMemoryClient` |
-| Configuration | `from mem0.configs.base import MemoryConfig` |
-| LLM providers | `from mem0.llms.<provider> import <ProviderLLM>` |
-| Embedding providers | `from mem0.embeddings.<provider> import <ProviderEmbedding>` |
+
+| What                   | Import                                                            |
+| ---------------------- | ----------------------------------------------------------------- |
+| Core memory classes    | `from mem0 import Memory, AsyncMemory`                            |
+| Platform client        | `from mem0 import MemoryClient, AsyncMemoryClient`                |
+| Configuration          | `from mem0.configs.base import MemoryConfig`                      |
+| LLM providers          | `from mem0.llms.<provider> import <ProviderLLM>`                  |
+| Embedding providers    | `from mem0.embeddings.<provider> import <ProviderEmbedding>`      |
 | Vector store providers | `from mem0.vector_stores.<provider> import <ProviderVectorStore>` |
+
 
 ### TypeScript
 
-| What | Import |
-|------|--------|
-| Hosted client | `import { MemoryClient } from 'mem0ai'` |
-| OSS memory | `import { Memory } from 'mem0ai/oss'` |
+
+| What                     | Import                                         |
+| ------------------------ | ---------------------------------------------- |
+| Hosted client            | `import { MemoryClient } from 'mem0ai'`        |
+| OSS memory               | `import { Memory } from 'mem0ai/oss'`          |
 | Specific providers (OSS) | `import { OpenAIEmbedding } from 'mem0ai/oss'` |
+
 
 ## Coding Standards
 
@@ -339,12 +351,14 @@ make run-openai                    # OpenAI comparison
 - **TypeScript strict mode** across all packages.
 - **Linting varies by package:**
 
-| Package | Linter | Formatter | Test Framework |
-|---------|--------|-----------|---------------|
-| `mem0-ts/` | — | Prettier | jest |
-| `cli/node/` | Biome | Biome | vitest |
-| `vercel-ai-sdk/` | ESLint | Prettier | jest + vitest |
-| `openclaw/` | — | — | vitest |
+
+| Package          | Linter | Formatter | Test Framework |
+| ---------------- | ------ | --------- | -------------- |
+| `mem0-ts/`       | —      | Prettier  | jest           |
+| `cli/node/`      | Biome  | Biome     | vitest         |
+| `vercel-ai-sdk/` | ESLint | Prettier  | jest + vitest  |
+| `openclaw/`      | —      | —         | vitest         |
+
 
 ### Type Checking
 
@@ -360,13 +374,15 @@ cd <package> && pnpm run typecheck    # or: tsc --noEmit
 
 The SDK uses a consistent plugin architecture across 5 categories. Each category has a `base.py` abstract class and concrete provider implementations:
 
-| Category | Count | Examples |
-|----------|-------|---------|
-| **LLMs** | 24 | OpenAI, Anthropic, AWS Bedrock, Azure OpenAI, Gemini, Groq, Ollama, Together, DeepSeek, vLLM, LiteLLM, LM Studio, xAI |
-| **Vector Stores** | 30 | Qdrant, Pinecone, Chroma, Weaviate, Milvus, MongoDB, Redis, Elasticsearch, pgvector, Supabase, Faiss, S3 Vectors |
-| **Embeddings** | 15 | OpenAI, Azure OpenAI, Gemini, HuggingFace, FastEmbed, Together, AWS Bedrock, Ollama, Vertex AI |
-| **Graph Stores** | 4 | Neo4j, Memgraph, Kuzu, Apache AGE |
-| **Rerankers** | 5 | Cohere, HuggingFace, LLM-based, Sentence Transformer, Zero Entropy |
+
+| Category          | Count | Examples                                                                                                              |
+| ----------------- | ----- | --------------------------------------------------------------------------------------------------------------------- |
+| **LLMs**          | 24    | OpenAI, Anthropic, AWS Bedrock, Azure OpenAI, Gemini, Groq, Ollama, Together, DeepSeek, vLLM, LiteLLM, LM Studio, xAI |
+| **Vector Stores** | 30    | Qdrant, Pinecone, Chroma, Weaviate, Milvus, MongoDB, Redis, Elasticsearch, pgvector, Supabase, Faiss, S3 Vectors      |
+| **Embeddings**    | 15    | OpenAI, Azure OpenAI, Gemini, HuggingFace, FastEmbed, Together, AWS Bedrock, Ollama, Vertex AI                        |
+| **Graph Stores**  | 4     | Neo4j, Memgraph, Kuzu, Apache AGE                                                                                     |
+| **Rerankers**     | 5     | Cohere, HuggingFace, LLM-based, Sentence Transformer, Zero Entropy                                                    |
+
 
 ### Two Usage Modes
 
@@ -405,36 +421,42 @@ To add a new LLM, embedding, vector store, or reranker provider:
 
 ### CI Workflows (automated testing)
 
-| Workflow | File | Triggers | Tests |
-|----------|------|----------|-------|
-| Python SDK | `ci.yml` | Push to main, PRs on `mem0/`, `tests/`, `pyproject.toml` | Ruff lint + pytest on Python 3.10, 3.11, 3.12 |
-| TypeScript SDK | `ts-sdk-ci.yml` | Push to main, PRs on `mem0-ts/` | Prettier + build + jest on Node 20, 22 |
-| Python CLI | `cli-python-ci.yml` | Push to `cli/python/`, PRs, manual | Ruff lint + pytest + hatch build on Python 3.10, 3.11, 3.12 |
-| Node CLI | `cli-node-ci.yml` | Push to `cli/node/`, PRs, manual | Biome lint + tsc + vitest + tsup build on Node 20, 22 |
-| OpenClaw | `openclaw-checks.yml` | Push to `openclaw/`, PRs, manual | tsc + vitest (with Codecov) + tsup build on Node 20, 22 |
-| Embedchain | `ci.yml` (shared) | PRs on `embedchain/` | Ruff + pytest + coverage on Python 3.9–3.12 |
+
+| Workflow       | File                  | Triggers                                                 | Tests                                                       |
+| -------------- | --------------------- | -------------------------------------------------------- | ----------------------------------------------------------- |
+| Python SDK     | `ci.yml`              | Push to main, PRs on `mem0/`, `tests/`, `pyproject.toml` | Ruff lint + pytest on Python 3.10, 3.11, 3.12               |
+| TypeScript SDK | `ts-sdk-ci.yml`       | Push to main, PRs on `mem0-ts/`                          | Prettier + build + jest on Node 20, 22                      |
+| Python CLI     | `cli-python-ci.yml`   | Push to `cli/python/`, PRs, manual                       | Ruff lint + pytest + hatch build on Python 3.10, 3.11, 3.12 |
+| Node CLI       | `cli-node-ci.yml`     | Push to `cli/node/`, PRs, manual                         | Biome lint + tsc + vitest + tsup build on Node 20, 22       |
+| OpenClaw       | `openclaw-checks.yml` | Push to `openclaw/`, PRs, manual                         | tsc + vitest (with Codecov) + tsup build on Node 20, 22     |
+| Embedchain     | `ci.yml` (shared)     | PRs on `embedchain/`                                     | Ruff + pytest + coverage on Python 3.9–3.12                 |
+
 
 ### CD Workflows (automated publishing)
 
-| Workflow | File | Tag Prefix | Target |
-|----------|------|------------|--------|
-| Python SDK | `cd.yml` | `v*` | PyPI (`mem0ai`) |
-| TypeScript SDK | `ts-sdk-cd.yml` | `ts-v*` | npm (`mem0ai`) |
-| Python CLI | `cli-python-cd.yml` | `cli-v*` | PyPI (`mem0-cli`) |
-| Node CLI | `cli-node-cd.yml` | `cli-node-v*` | npm (`@mem0/cli`) |
-| Vercel AI SDK | `vercel-ai-cd.yml` | `vercel-ai-v*` | npm (`@mem0/vercel-ai-provider`) |
-| OpenClaw | `openclaw-cd.yml` | `openclaw-v*` | npm (`@mem0/openclaw-mem0`) |
+
+| Workflow       | File                | Tag Prefix     | Target                           |
+| -------------- | ------------------- | -------------- | -------------------------------- |
+| Python SDK     | `cd.yml`            | `v*`           | PyPI (`mem0ai`)                  |
+| TypeScript SDK | `ts-sdk-cd.yml`     | `ts-v*`        | npm (`mem0ai`)                   |
+| Python CLI     | `cli-python-cd.yml` | `cli-v*`       | PyPI (`mem0-cli`)                |
+| Node CLI       | `cli-node-cd.yml`   | `cli-node-v*`  | npm (`@mem0/cli`)                |
+| Vercel AI SDK  | `vercel-ai-cd.yml`  | `vercel-ai-v*` | npm (`@mem0/vercel-ai-provider`) |
+| OpenClaw       | `openclaw-cd.yml`   | `openclaw-v*`  | npm (`@mem0/openclaw-mem0`)      |
+
 
 - All publishing uses **OIDC trusted publishing** — no tokens or secrets required.
 - First publish of a new npm package must be done manually; OIDC works for subsequent versions.
 
 ### Utility Workflows
 
-| Workflow | File | Purpose |
-|----------|------|---------|
-| Issue Labeler | `issue-labeler.yml` | Automatic issue labeling |
-| Stale Bot | `stale.yml` | Marks stale issues and PRs |
+
+| Workflow       | File                      | Purpose                                                                                                                                        |
+| -------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Issue Labeler  | `issue-labeler.yml`       | Automatic issue labeling                                                                                                                       |
+| Stale Bot      | `stale.yml`               | Marks stale issues and PRs                                                                                                                     |
 | llms.txt Check | `docs-llms-txt-check.yml` | Blocks PRs touching `docs/**/*.mdx` when `docs/llms.txt` is out of sync. Fix locally with `python scripts/check-llms-txt-coverage.py --write`. |
+
 
 ## Task Completion Guidelines
 
@@ -498,19 +520,19 @@ Every PR must follow the repo's PR template (`.github/PULL_REQUEST_TEMPLATE.md`)
 1. **Linked Issue** — Reference the issue with `Closes #<number>`. If no issue exists, create one first or explain why in the description.
 2. **Description** — Explain what the PR does and why it's needed.
 3. **Type of Change** — Check the appropriate box:
-   - Bug fix / New feature / Breaking change / Refactor / Documentation update
+  - Bug fix / New feature / Breaking change / Refactor / Documentation update
 4. **Breaking Changes** — If applicable, describe what breaks and the migration path.
 5. **Test Coverage** — Check what applies:
-   - Added/updated unit tests
-   - Added/updated integration tests
-   - Tested manually (describe how)
-   - No tests needed (explain why)
+  - Added/updated unit tests
+  - Added/updated integration tests
+  - Tested manually (describe how)
+  - No tests needed (explain why)
 6. **Checklist** — All must be checked before merge:
-   - [ ] Code follows the project's style guidelines
-   - [ ] Self-review performed
-   - [ ] Tests added that prove the fix/feature works
-   - [ ] New and existing tests pass locally
-   - [ ] Documentation updated if needed
+  - Code follows the project's style guidelines
+  - Self-review performed
+  - Tests added that prove the fix/feature works
+  - New and existing tests pass locally
+  - Documentation updated if needed
 
 ### PR Description Template
 
@@ -560,14 +582,16 @@ N/A
 
 ### Contributing Guides
 
-| Task | Guide |
-|------|-------|
-| Code contributions | `docs/contributing/development.mdx` |
-| Documentation contributions | `docs/contributing/documentation.mdx` |
-| PR template | `.github/PULL_REQUEST_TEMPLATE.md` |
-| Bug reports | `.github/ISSUE_TEMPLATE/bug_report.yml` |
-| Feature requests | `.github/ISSUE_TEMPLATE/feature_request.yml` |
-| Documentation issues | `.github/ISSUE_TEMPLATE/documentation_issue.yml` |
+
+| Task                        | Guide                                            |
+| --------------------------- | ------------------------------------------------ |
+| Code contributions          | `docs/contributing/development.mdx`              |
+| Documentation contributions | `docs/contributing/documentation.mdx`            |
+| PR template                 | `.github/PULL_REQUEST_TEMPLATE.md`               |
+| Bug reports                 | `.github/ISSUE_TEMPLATE/bug_report.yml`          |
+| Feature requests            | `.github/ISSUE_TEMPLATE/feature_request.yml`     |
+| Documentation issues        | `.github/ISSUE_TEMPLATE/documentation_issue.yml` |
+
 
 ## Do NOT
 
@@ -581,3 +605,4 @@ N/A
 - Mix up linter configs: root Python SDK uses line-length 120, Python CLI uses 100, Node CLI uses Biome (not ESLint/Ruff).
 - Modify `openmemory/` database migrations without understanding the Alembic migration chain.
 - Change public APIs without updating documentation in `docs/`.
+

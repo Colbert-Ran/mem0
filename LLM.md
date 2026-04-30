@@ -5,6 +5,7 @@
 Mem0 ("mem-zero") is an intelligent memory layer that enhances AI assistants and agents with persistent, personalized memory capabilities. It enables AI systems to remember user preferences, adapt to individual needs, and continuously learn over time—making it ideal for customer support chatbots, AI assistants, and autonomous systems.
 
 **Key Benefits:**
+
 - +26% Accuracy over OpenAI Memory on LOCOMO benchmark
 - 91% Faster responses than full-context approaches
 - 90% Lower token usage than full-context methods
@@ -22,6 +23,7 @@ npm install mem0ai
 ## Quick Start
 
 ### Python - Self-Hosted
+
 ```python
 from mem0 import Memory
 
@@ -43,6 +45,7 @@ all_memories = memory.get_all(user_id="user123")
 ```
 
 ### Python - Hosted Platform
+
 ```python
 from mem0 import MemoryClient
 
@@ -59,6 +62,7 @@ results = client.search("What do you know about me?", user_id="john")
 ```
 
 ### TypeScript - Client SDK
+
 ```typescript
 import { MemoryClient } from 'mem0ai';
 
@@ -74,6 +78,7 @@ const results = await client.search('What is my name?', { user_id: 'john' });
 ```
 
 ### TypeScript - OSS SDK
+
 ```typescript
 import { Memory } from 'mem0ai/oss';
 
@@ -93,6 +98,7 @@ const result = await memory.add('My name is John', { userId: 'john' });
 **Import:** `from mem0 import Memory, AsyncMemory`
 
 #### Initialization
+
 ```python
 from mem0 import Memory
 from mem0.configs.base import MemoryConfig
@@ -111,7 +117,8 @@ memory = Memory(config)
 
 #### Core Methods
 
-**add(messages, *, user_id=None, agent_id=None, run_id=None, metadata=None, infer=True, memory_type=None, prompt=None)**
+**add(messages, , user_id=None, agent_id=None, run_id=None, metadata=None, infer=True, memory_type=None, prompt=None)*
+
 - **Purpose**: Create new memories from messages
 - **Parameters**:
   - `messages`: str, dict, or list of message dicts
@@ -122,7 +129,8 @@ memory = Memory(config)
   - `prompt`: Custom prompt for memory creation
 - **Returns**: Dict with "results" key containing memory operations
 
-**search(query, *, user_id=None, agent_id=None, run_id=None, limit=100, filters=None, threshold=None)**
+**search(query, , user_id=None, agent_id=None, run_id=None, limit=100, filters=None, threshold=None)*
+
 - **Purpose**: Search memories semantically
 - **Parameters**:
   - `query`: Search query string
@@ -133,30 +141,37 @@ memory = Memory(config)
 - **Returns**: Dict with "results" containing scored memories
 
 **get(memory_id)**
+
 - **Purpose**: Retrieve specific memory by ID
 - **Returns**: Memory dict with id, memory, hash, timestamps, metadata
 
 **get_all(*, user_id=None, agent_id=None, run_id=None, filters=None, limit=100)**
+
 - **Purpose**: List all memories with optional filtering
 - **Returns**: Dict with "results" containing list of memories
 
 **update(memory_id, data)**
+
 - **Purpose**: Update memory content or metadata
 - **Returns**: Success message dict
 
 **delete(memory_id)**
+
 - **Purpose**: Delete specific memory
 - **Returns**: Success message dict
 
 **delete_all(user_id=None, agent_id=None, run_id=None)**
+
 - **Purpose**: Delete all memories for session (at least one ID required)
 - **Returns**: Success message dict
 
 **history(memory_id)**
+
 - **Purpose**: Get memory change history
 - **Returns**: List of memory change history
 
 **reset()**
+
 - **Purpose**: Reset entire memory store
 - **Returns**: None
 
@@ -165,6 +180,7 @@ memory = Memory(config)
 **Import:** `from mem0 import MemoryClient, AsyncMemoryClient`
 
 #### Initialization
+
 ```python
 client = MemoryClient(
     api_key="your-api-key",  # or set MEM0_API_KEY env var
@@ -177,44 +193,53 @@ client = MemoryClient(
 #### Core Methods
 
 **add(messages, **kwargs)**
+
 - **Purpose**: Create memories from message conversations
 - **Parameters**: messages (list of message dicts), user_id, agent_id, app_id, metadata, filters
 - **Returns**: API response dict with memory creation results
 
 **search(query, version="v1", **kwargs)**
+
 - **Purpose**: Search memories based on query
 - **Parameters**: query, version ("v1"/"v2"), user_id, agent_id, app_id, top_k, filters
 - **Returns**: List of search result dictionaries
 
 **get(memory_id)**
+
 - **Purpose**: Retrieve specific memory by ID
 - **Returns**: Memory data dictionary
 
 **get_all(version="v1", **kwargs)**
+
 - **Purpose**: Retrieve all memories with filtering
 - **Parameters**: version, user_id, agent_id, app_id, top_k, page, page_size
 - **Returns**: List of memory dictionaries
 
 **update(memory_id, text=None, metadata=None)**
+
 - **Purpose**: Update memory text or metadata
 - **Returns**: Updated memory data
 
 **delete(memory_id)**
+
 - **Purpose**: Delete specific memory
 - **Returns**: Success response
 
 **delete_all(**kwargs)**
+
 - **Purpose**: Delete all memories with filtering
 - **Returns**: Success message
 
 #### Batch Operations
 
 **batch_update(memories)**
+
 - **Purpose**: Update multiple memories in single request
 - **Parameters**: List of memory update objects
 - **Returns**: Batch operation result
 
 **batch_delete(memories)**
+
 - **Purpose**: Delete multiple memories in single request
 - **Parameters**: List of memory objects
 - **Returns**: Batch operation result
@@ -222,35 +247,41 @@ client = MemoryClient(
 #### User Management
 
 **users()**
+
 - **Purpose**: Get all users, agents, and sessions with memories
 - **Returns**: Dict with user/agent/session data
 
 **delete_users(user_id=None, agent_id=None, app_id=None, run_id=None)**
+
 - **Purpose**: Delete specific entities or all entities
 - **Returns**: Success message
 
 **reset()**
+
 - **Purpose**: Reset client by deleting all users and memories
 - **Returns**: Success message
 
 #### Additional Features
 
 **history(memory_id)**
+
 - **Purpose**: Get memory change history
 - **Returns**: List of memory changes
 
 **feedback(memory_id, feedback, **kwargs)**
+
 - **Purpose**: Provide feedback on memory
 - **Returns**: Feedback response
 
 **create_memory_export(schema, **kwargs)**
+
 - **Purpose**: Create memory export with JSON schema
 - **Returns**: Export creation response
 
 **get_memory_export(**kwargs)**
+
 - **Purpose**: Retrieve exported memory data
 - **Returns**: Exported data
-
 
 ## Configuration System
 
@@ -274,6 +305,7 @@ config = MemoryConfig(
 ### Supported Providers
 
 #### LLM Providers (20 supported)
+
 - **openai** - OpenAI GPT models (default)
 - **anthropic** - Claude models
 - **gemini** - Google Gemini
@@ -294,6 +326,7 @@ config = MemoryConfig(
 - **azure_openai_structured** - Azure OpenAI with structured output
 
 #### Embedding Providers (10 supported)
+
 - **openai** - OpenAI embeddings (default)
 - **ollama** - Ollama embeddings
 - **huggingface** - HuggingFace models
@@ -306,6 +339,7 @@ config = MemoryConfig(
 - **aws_bedrock** - AWS Bedrock embeddings
 
 #### Vector Store Providers (19 supported)
+
 - **qdrant** - Qdrant vector database (default)
 - **chroma** - ChromaDB
 - **pinecone** - Pinecone vector database
@@ -327,6 +361,7 @@ config = MemoryConfig(
 - **databricks** - Databricks vector stores
 
 #### Graph Store Providers (4 supported)
+
 - **neo4j** - Neo4j graph database
 - **memgraph** - Memgraph
 - **neptune** - AWS Neptune Analytics
@@ -335,6 +370,7 @@ config = MemoryConfig(
 ### Configuration Examples
 
 #### OpenAI Configuration
+
 ```python
 config = MemoryConfig(
     llm={
@@ -355,6 +391,7 @@ config = MemoryConfig(
 ```
 
 #### Local Setup with Ollama
+
 ```python
 config = MemoryConfig(
     llm={
@@ -381,6 +418,7 @@ config = MemoryConfig(
 ```
 
 #### Graph Memory with Neo4j
+
 ```python
 config = MemoryConfig(
     graph_store={
@@ -396,6 +434,7 @@ config = MemoryConfig(
 ```
 
 #### Enterprise Setup
+
 ```python
 config = MemoryConfig(
     llm={
@@ -419,6 +458,7 @@ config = MemoryConfig(
 ```
 
 #### LLM Providers
+
 - **OpenAI** - GPT-4, GPT-3.5-turbo, and structured outputs
 - **Anthropic** - Claude models with advanced reasoning
 - **Google AI** - Gemini models for multimodal applications
@@ -436,6 +476,7 @@ config = MemoryConfig(
 - **LangChain** - LangChain LLM integration
 
 #### Vector Store Providers
+
 - **Chroma** - AI-native open-source vector database
 - **Qdrant** - High-performance vector similarity search
 - **Pinecone** - Managed vector database with serverless options
@@ -456,6 +497,7 @@ config = MemoryConfig(
 - **LangChain** - LangChain vector store integration
 
 #### Embedding Providers
+
 - **OpenAI** - High-quality text embeddings
 - **Azure OpenAI** - Enterprise Azure-hosted embeddings
 - **Google AI** - Gemini embedding models
@@ -617,6 +659,7 @@ print(result["relations"])   # Graph relationships
 ```
 
 **Supported Graph Databases:**
+
 - **Neo4j**: Full-featured graph database with Cypher queries
 - **Memgraph**: High-performance in-memory graph database
 - **Neptune**: AWS managed graph database service
@@ -688,7 +731,6 @@ config = MemoryConfig(
 )
 memory = Memory(config)
 ```
-
 
 ## Common Usage Patterns
 
@@ -1020,7 +1062,6 @@ def get_user_preferences(user_id: str):
     return memory.search("preferences settings", user_id=user_id, limit=5)
 ```
 
-
 ## Integration Examples
 
 ### AutoGen Integration
@@ -1201,30 +1242,28 @@ async def delete_memory(memory_id: str):
 ### Common Issues
 
 1. **Memory Not Found**
-   ```python
+  ```python
    # Check if memory exists before operations
    memory = memory_client.get(memory_id)
    if not memory:
        print(f"Memory {memory_id} not found")
-   ```
-
+  ```
 2. **Search Returns No Results**
-   ```python
+  ```python
    # Lower the similarity threshold
    results = memory.search(
        query,
        user_id=user_id,
        threshold=0.5  # Lower threshold
    )
-   
+  
    # Check if memories exist for user
    all_memories = memory.get_all(user_id=user_id)
    if not all_memories['results']:
        print("No memories found for user")
-   ```
-
+  ```
 3. **Configuration Issues**
-   ```python
+  ```python
    # Validate configuration
    try:
        memory = Memory(config)
@@ -1233,13 +1272,12 @@ async def delete_memory(memory_id: str):
        print("Configuration valid")
    except Exception as e:
        print(f"Configuration error: {e}")
-   ```
-
+  ```
 4. **API Rate Limits**
-   ```python
+  ```python
    import time
    from functools import wraps
-   
+  
    def rate_limit_retry(max_retries=3, delay=1):
        def decorator(func):
            @wraps(func)
@@ -1254,16 +1292,16 @@ async def delete_memory(memory_id: str):
                        raise e
                return wrapper
            return decorator
-   
+  
    @rate_limit_retry()
    def safe_memory_add(memory, content, user_id):
        return memory.add(content, user_id=user_id)
-   ```
+  ```
 
 ### Performance Tips
 
 1. **Optimize Vector Store Configuration**
-   ```python
+  ```python
    # For Qdrant
    config = MemoryConfig(
        vector_store={
@@ -1277,10 +1315,9 @@ async def delete_memory(memory_id: str):
            }
        }
    )
-   ```
-
+  ```
 2. **Batch Processing**
-   ```python
+  ```python
    # Process multiple memories efficiently
    def batch_add_memories(memory_client, conversations, user_id, batch_size=10):
        for i in range(0, len(conversations), batch_size):
@@ -1288,10 +1325,9 @@ async def delete_memory(memory_id: str):
            for conv in batch:
                memory_client.add(conv, user_id=user_id)
            time.sleep(0.1)  # Small delay between batches
-   ```
-
+  ```
 3. **Memory Cleanup**
-   ```python
+  ```python
    # Regular cleanup to maintain performance
    def cleanup_memories(memory_client, user_id, max_memories=1000):
        all_memories = memory_client.get_all(user_id=user_id)
@@ -1302,20 +1338,20 @@ async def delete_memory(memory_id: str):
                key=lambda x: x['created_at'],
                reverse=True
            )
-           
+  
            # Delete oldest memories
            for memory in sorted_memories[max_memories:]:
                memory_client.delete(memory['id'])
-   ```
+  ```
 
 ## Resources
 
-- **Documentation**: https://docs.mem0.ai
-- **GitHub Repository**: https://github.com/mem0ai/mem0
-- **Discord Community**: https://mem0.dev/DiG
-- **Platform**: https://app.mem0.ai
-- **Research Paper**: https://mem0.ai/research
-- **Examples**: https://github.com/mem0ai/mem0/tree/main/examples
+- **Documentation**: [https://docs.mem0.ai](https://docs.mem0.ai)
+- **GitHub Repository**: [https://github.com/mem0ai/mem0](https://github.com/mem0ai/mem0)
+- **Discord Community**: [https://mem0.dev/DiG](https://mem0.dev/DiG)
+- **Platform**: [https://app.mem0.ai](https://app.mem0.ai)
+- **Research Paper**: [https://mem0.ai/research](https://mem0.ai/research)
+- **Examples**: [https://github.com/mem0ai/mem0/tree/main/examples](https://github.com/mem0ai/mem0/tree/main/examples)
 
 ## License
 

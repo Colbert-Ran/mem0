@@ -5,6 +5,7 @@
 **What changed?** We simplified the API by removing confusing version parameters. Now everything returns a consistent format: `{"results": [...]}`.
 
 **What you need to do:**
+
 1. Upgrade: `pip install mem0ai==1.0.0`
 2. Remove `version` and `output_format` parameters from your code
 3. Update response handling to use `result["results"]` instead of treating responses as lists
@@ -116,6 +117,7 @@ client.add(messages, user_id="alice", async_mode=False)
 ## That's It!
 
 For most users, that's all you need to know. The changes are:
+
 - ✅ No more `version` or `output_format` parameters
 - ✅ Consistent `{"results": [...]}` response format
 - ✅ Cleaner, simpler API
@@ -124,9 +126,10 @@ For most users, that's all you need to know. The changes are:
 
 ## Common Issues
 
-**Getting `KeyError: 'results'`?**
+**Getting** `KeyError: 'results'`**?**
 
 Your code is still treating the response as a list. Update it:
+
 ```python
 # Change this:
 for memory in response:
@@ -135,9 +138,10 @@ for memory in response:
 for memory in response["results"]:
 ```
 
-**Getting `TypeError: unexpected keyword argument`?**
+**Getting** `TypeError: unexpected keyword argument`**?**
 
 You're still passing old parameters. Remove them:
+
 ```python
 # Change this:
 client.add(messages, output_format="v1.1")
@@ -149,6 +153,7 @@ client.add(messages)
 **Seeing deprecation warnings?**
 
 Remove any explicit `version="v1.0"` from your config:
+
 ```python
 # Change this:
 memory = Memory(config=MemoryConfig(version="v1.0"))
@@ -219,3 +224,4 @@ assert "results" in all_memories
 
 print("✅ Migration successful!")
 ```
+
